@@ -2,7 +2,7 @@ terraform {
     required_providers {
         googleml = {
             version = "0.1.0"
-            source = "cmacfarl.org/mlapi/google-ml"
+            source = "cmacfarl/mlapi/google-ml"
         }
     }
 }
