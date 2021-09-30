@@ -38,7 +38,6 @@ func dataSourceMlConfigRead(ctx context.Context, d *schema.ResourceData, m inter
 
 	if v, ok := d.GetOk("credentials"); ok {
 		credentials = v.(string)
-
 	} else if filename := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"); filename != "" {
 		credentials = filename
 	}
