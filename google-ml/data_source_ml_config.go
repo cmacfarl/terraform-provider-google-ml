@@ -41,7 +41,6 @@ func dataSourceMlConfigRead(ctx context.Context, d *schema.ResourceData, m inter
 
 	} else if filename := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"); filename != "" {
 		credentials = filename
-
 	}
 
 	mlService, err := ml.NewService(ctx, option.WithCredentialsFile(credentials))
