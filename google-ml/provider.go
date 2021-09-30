@@ -27,7 +27,7 @@ func Provider() *schema.Provider {
 			},
 			"credentials": &schema.Schema{
 				Type: schema.TypeString,
-				Required: true,
+				Optional: true,
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{},

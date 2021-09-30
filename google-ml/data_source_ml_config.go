@@ -2,6 +2,7 @@ package ml_datasource
 
 import (
 	"context"
+	"os"
 	"strconv"
 	"time"
 
@@ -34,6 +35,14 @@ func dataSourceMlConfig() *schema.Resource {
 
 func dataSourceMlConfigRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	var diags diag.Diagnostics
+
+	if v, ok := d.GetOk("credentials"); ok {
+		credentials = v.(string)
+
+	} else if filename := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"); filename != "" {
+		credentials = filename
+
+	}
 
 	mlService, err := ml.NewService(ctx, option.WithCredentialsFile(credentials))
 	if err != nil {
